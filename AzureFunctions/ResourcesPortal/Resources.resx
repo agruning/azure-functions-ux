@@ -1913,4 +1913,10 @@ Set to "External URL" to use an API definition that is hosted elsewhere.</value>
   <data name="functionDev_saveFunctionSuccess" xml:space="preserve">
     <value>Successfully saved function '{0}'</value>
   </data>
+  <data name="feature_logicAppInfo" xml:space="preserve">
+    <value>Logic Apps allow you to easily utilize your function across multiple platforms</value>
+  </data>
+  <data name="feature_logicAppName" xml:space="preserve">
+    <value>Logic Apps</value>
+  </data>
 </root>

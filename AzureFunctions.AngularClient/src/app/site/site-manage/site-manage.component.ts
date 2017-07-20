@@ -213,6 +213,8 @@ export class SiteManageComponent implements OnDestroy {
         ];
 
         let developmentToolFeatures = [
+            new OpenLogicAppFeature(site, this._hasSiteWritePermissionStream, this._translateService),
+
             new DisableableBladeFeature(
                 this._translateService.instant(PortalResources.feature_consoleName),
                 this._translateService.instant(PortalResources.feature_consoleName) +
@@ -634,6 +636,23 @@ export class OpenKuduFeature extends DisableableFeature {
     click() {
         let scmHostName = this._site.properties.hostNameSslStates.find(h => h.hostType === 1).name;
         window.open(`https://${scmHostName}`);
+    }
+}
+
+export class OpenLogicAppFeature extends DisableableFeature {
+    constructor(private _site: ArmObj<Site>, disabledInfoStream: Subject<DisableInfo>, private _translateService: TranslateService) {
+
+        super(
+            _translateService.instant(PortalResources.feature_logicAppName),
+            _translateService.instant(PortalResources.feature_logicAppName),
+            _translateService.instant(PortalResources.feature_logicAppInfo),
+            "images/logicapps-COLOR.svg", // fix image
+            disabledInfoStream);
+    }
+
+    click() {
+        let scmHostName = this._site.properties.hostNameSslStates.find(h => h.hostType === 1).name;
+        window.open(`https://${scmHostName}/dev`); // find correct url
     }
 }
 

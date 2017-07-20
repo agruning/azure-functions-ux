@@ -599,5 +599,7 @@ export class PortalResources
     public static functionDev_saveFunctionFailure: string = "functionDev_saveFunctionFailure";
     public static functionDev_saveFunctionNotifyTitle: string = "functionDev_saveFunctionNotifyTitle";
     public static functionDev_saveFunctionSuccess: string = "functionDev_saveFunctionSuccess";
+    public static feature_logicAppInfo: string = "feature_logicAppInfo";
+    public static feature_logicAppName: string = "feature_logicAppName";
 }
 
