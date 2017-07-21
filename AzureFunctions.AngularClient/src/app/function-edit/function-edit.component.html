@@ -15,7 +15,7 @@
 <div *ngIf="tabId === 'monitor'" class="function-edit-content">
     <function-monitor [selectedFunction]="selectedFunction"></function-monitor>
 </div>
-<!-- <div *ngIf="tabId === 'orchestrate'" class="function-edit-content">
+<div *ngIf="tabId === 'orchestrate'" class="function-edit-content">
     <app-edit-mode-warning [functionApp]="functionApp" [appNode]="appNode"></app-edit-mode-warning>
-    <function-orchestrate *ngIf="editorType === 'advanced'" (changeEditor)="onEditorChange($event)" [selectedFunction]="selectedFunction"></function-orchestrate>
-</div>      -->
+    <function-orchestrate [viewInfoInput]="viewInfo"></function-orchestrate>
+</div>    

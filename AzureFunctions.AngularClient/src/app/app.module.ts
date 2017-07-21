@@ -1,3 +1,4 @@
+import { FunctionOrchestrateComponent } from './function-orchestrate/function-orchestrate.component';
 import { DownloadFunctionAppContentComponent } from './download-function-app-content/download-function-app-content.component';
 import { CreateAppComponent } from './site/create-app/create-app.component';
 import { ClickToEditComponent } from './controls/click-to-edit/click-to-edit.component';
@@ -217,7 +218,8 @@ export class AppModule {
       ServiceBusComponent,
       SearchBoxComponent,
       AppSettingComponent,
-      DownloadFunctionAppContentComponent
+      DownloadFunctionAppContentComponent,
+      FunctionOrchestrateComponent
     ],
     imports: [
       FormsModule,

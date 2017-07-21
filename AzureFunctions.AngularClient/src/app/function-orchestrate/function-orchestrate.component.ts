@@ -18,7 +18,7 @@ import { GlobalStateService } from '../shared/services/global-state.service';
 import { PortalResources } from '../shared/models/portal-resources';
 import { FunctionApp } from '../shared/function-app';
 import { TreeViewInfo } from '../tree-view/models/tree-view-info';
-import { FunctionManageNode } from '../tree-view/function-node';
+import { FunctionOrchestrateNode } from '../tree-view/function-node';
 import { BindingManager } from '../shared/models/binding-manager';
 
 @Component({
@@ -35,7 +35,7 @@ export class FunctionOrchestrateComponent {
     public isHttpFunction: boolean = false;
 
     private _viewInfoStream: Subject<TreeViewInfo<any>>;
-    private _functionNode: FunctionManageNode;
+    private _functionNode: FunctionOrchestrateNode;
     private functionStateValueChange: Subject<boolean>;
 
     constructor(private _broadcastService: BroadcastService,
@@ -50,7 +50,7 @@ export class FunctionOrchestrateComponent {
         this._viewInfoStream
             .retry()
             .subscribe(viewInfo => {
-                this._functionNode = <FunctionManageNode>viewInfo.node;
+                this._functionNode = <FunctionOrchestrateNode>viewInfo.node;
                 this.functionInfo = this._functionNode.functionInfo;
                 this.functionApp = this.functionInfo.functionApp;
                 this.isHttpFunction = BindingManager.isHttpFunction(this.functionInfo);
