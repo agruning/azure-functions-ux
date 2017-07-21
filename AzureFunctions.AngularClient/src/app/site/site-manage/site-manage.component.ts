@@ -647,7 +647,7 @@ export class OpenLogicAppFeature extends DisableableFeature {
             _translateService.instant(PortalResources.feature_logicAppName),
             _translateService.instant(PortalResources.feature_logicAppName),
             _translateService.instant(PortalResources.feature_logicAppInfo),
-            "images/logicapp.svg", // fix image
+            "images/logicapp.svg",
             disabledInfoStream);
     }
 

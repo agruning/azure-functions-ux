@@ -62,11 +62,13 @@ export class FunctionNode extends TreeNode implements CanBlockNavChange, Disposa
         this.children = [
             new FunctionIntegrateNode(this.sideNav, this.functionInfo, this),
             new FunctionManageNode(this.sideNav, this._functionsNode, this.functionInfo, this),
-        ]
+        ];
 
         if (!this.sideNav.configService.isStandalone()) {
             this.children.push(new FunctionMonitorNode(this.sideNav, this.functionInfo, this));
         }
+
+        this.children.push(new FunctionOrchestrateNode(this.sideNav, this._functionsNode, this.functionInfo, this));
 
         return Observable.of(null);
     }
@@ -137,7 +139,7 @@ export class FunctionEditBaseNode extends TreeNode implements CanBlockNavChange,
 }
 
 export class FunctionIntegrateNode extends FunctionEditBaseNode {
-    public dashboardType = DashboardType.functionIntegrate
+    public dashboardType = DashboardType.functionIntegrate;
     public title = this.sideNav.translateService.instant(PortalResources.tabNames_integrate);
 
     constructor(
@@ -155,8 +157,8 @@ export class FunctionIntegrateNode extends FunctionEditBaseNode {
 }
 
 export class FunctionManageNode extends FunctionEditBaseNode implements Removable {
-    public dashboardType = DashboardType.functionManage
-    public title = this.sideNav.translateService.instant(PortalResources.tabNames_manage);;
+    public dashboardType = DashboardType.functionManage;
+    public title = this.sideNav.translateService.instant(PortalResources.tabNames_manage);
 
     constructor(
         sideNav: SideNavComponent,
@@ -186,7 +188,7 @@ export class FunctionManageNode extends FunctionEditBaseNode implements Removabl
 
 export class FunctionMonitorNode extends FunctionEditBaseNode {
     public dashboardType = DashboardType.functionMonitor;
-    public title = this.sideNav.translateService.instant(PortalResources.tabNames_monitor);;
+    public title = this.sideNav.translateService.instant(PortalResources.tabNames_monitor);
 
     constructor(
         sideNav: SideNavComponent,
@@ -199,5 +201,35 @@ export class FunctionMonitorNode extends FunctionEditBaseNode {
             parentNode);
 
         this.iconClass = "fa fa-search tree-node-function-edit-icon";
+    }
+}
+
+export class FunctionOrchestrateNode extends FunctionEditBaseNode {
+    public dashboardType = DashboardType.functionOrchestrate;
+    public title = this.sideNav.translateService.instant(PortalResources.tabNames_orchestrate);
+
+    constructor(
+        sideNav: SideNavComponent,
+        private _functionsNode: FunctionsNode,
+        functionInfo: FunctionInfo,
+        parentNode: TreeNode) {
+
+        super(sideNav,
+            functionInfo,
+            functionInfo.functionApp.site.id + "/functions/" + functionInfo.name + "/orchestrate",
+            parentNode);
+
+        this.iconClass = "fa fa-cog tree-node-function-edit-icon";
+    }
+
+    public remove() {
+        this._functionsNode.removeChild(this.functionInfo, false);
+
+        this.sideNav.cacheService.clearCachePrefix(
+            FunctionApp.getMainUrl(this.sideNav.configService, this.functionInfo.functionApp.site));
+
+        this.sideNav.cacheService.clearCachePrefix(
+            FunctionApp.getScmUrl(this.sideNav.configService, this.functionInfo.functionApp.site));
+
     }
 }

@@ -14,7 +14,7 @@ import { FunctionDevComponent } from '../function-dev/function-dev.component';
 import { FunctionConfig } from '../shared/models/function-config';
 import { FunctionSecrets } from '../shared/models/function-secrets';
 import { BroadcastService } from '../shared/services/broadcast.service';
-import { BroadcastEvent } from '../shared/models/broadcast-event'
+import { BroadcastEvent } from '../shared/models/broadcast-event';
 import { TutorialEvent, TutorialStep } from '../shared/models/tutorial';
 import { TreeViewInfo } from '../tree-view/models/tree-view-info';
 import { FunctionNode } from '../tree-view/function-node';
@@ -38,6 +38,7 @@ export class FunctionEditComponent {
     public IntegrateTab: string;
     public MonitorTab: string;
     public ManageTab: string;
+    public OrchestrateTab: string;
     public tabId: string = "";
 
     private _viewInfoStream: Subject<TreeViewInfo<any>>;
@@ -56,6 +57,7 @@ export class FunctionEditComponent {
         this.IntegrateTab = _translateService.instant("tabNames_integrate");
         this.MonitorTab = _translateService.instant("tabNames_monitor");
         this.ManageTab = _translateService.instant("tabNames_manage");
+        this.OrchestrateTab = _translateService.instant("tabNames_orchestrate");
 
         this._viewInfoStream = new Subject<TreeViewInfo<any>>();
         this._viewInfoStream

@@ -604,5 +604,6 @@ export class PortalResources
     public static functionDev_saveFunctionSuccess: string = "functionDev_saveFunctionSuccess";
     public static feature_logicAppInfo: string = "feature_logicAppInfo";
     public static feature_logicAppName: string = "feature_logicAppName";
+    public static tabNames_orchestrate: string = "tabNames_orchestrate";
 }
 

@@ -1928,4 +1928,7 @@ Set to "External URL" to use an API definition that is hosted elsewhere.</value>
   <data name="feature_logicAppName" xml:space="preserve">
     <value>Logic Apps</value>
   </data>
+  <data name="tabNames_orchestrate" xml:space="preserve">
+    <value>Orchestrate</value>
+  </data>
 </root>

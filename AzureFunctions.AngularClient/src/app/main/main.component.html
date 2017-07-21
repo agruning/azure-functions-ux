@@ -19,7 +19,8 @@
         <function-edit [viewInfoInput]="viewInfo" *ngIf="trialExpired === false && (dashboardType === 'function'
                     || dashboardType === 'functionIntegrate'
                     || dashboardType === 'functionManage'
-                    || dashboardType === 'functionMonitor')"></function-edit>
+                    || dashboardType === 'functionMonitor'
+                    || dashboardType === 'functionOrchestrate')"></function-edit>
 
         <create-function-wrapper [viewInfoInput]="viewInfo" *ngIf="trialExpired === false && (dashboardType === 'createFunctionAutoDetect'
                     || dashboardType === 'createFunction'

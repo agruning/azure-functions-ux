@@ -16,6 +16,7 @@ export enum DashboardType {
     functionIntegrate,
     functionManage,
     functionMonitor,
+    functionOrchestrate,
     createProxy,
     proxies,
     proxy,
