@@ -1,18 +1,28 @@
-<div class="wrapper">
+<div class="list-collection-container">
+<img src="images/logicapp.svg" />
+<span class="text-level1-heading">{{ 'functionOrchestrate_orchestrateWithLogicApps' | translate }}</span>
+
+</div>
+
+
+<!-- <div class="wrapper">
     <div id="function-settings" [fnWriteAccess]="functionApp">
         <div>
-            <div class="title">{{ 'functionEdit_functionState' | translate }}</div>
+            <span class="test">
+                <img src="images/logicapp.svg" />
+            </span>
+            <div class="title">{{ 'functionOrchestrate_orchestrateWithLogicApps' | translate }}</div>
             <div *ngIf="functionInfo" class="function-state">
                 <radio-selector [options]="functionStatusOptions" [defaultValue]="!!functionInfo.config.disabled" (value)="functionStateValueChange.next($event)"></radio-selector>
                 <span class="clickable delete-app" (click)="deleteFunction()">
                     <img src="images/delete.svg" />{{ 'functionManage_deleteFunction' | translate }}
                 </span>
-            </div>
+            </div> 
         </div>
     </div>
 
 
-    <div *ngIf="!isStandalone">
+     <div *ngIf="!isStandalone">
         <function-keys
             *ngIf="functionApp?.isMultiKeySupported && isHttpFunction"
             [functionApp]="functionApp"
@@ -20,8 +30,8 @@
 
         <div style="margin-bottom: 25px" *ngIf="functionApp?.isMultiKeySupported"></div>
 
-        <function-keys
+         <function-keys
             *ngIf="functionApp?.isMultiKeySupported"
-            [functionApp]="functionApp"></function-keys>
-    </div>
-</div>
+            [functionApp]="functionApp"></function-keys> 
+    </div> 
+</div> -->

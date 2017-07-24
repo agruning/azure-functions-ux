@@ -605,5 +605,6 @@ export class PortalResources
     public static feature_logicAppInfo: string = "feature_logicAppInfo";
     public static feature_logicAppName: string = "feature_logicAppName";
     public static tabNames_orchestrate: string = "tabNames_orchestrate";
+    public static functionOrchestrate_orchestrateWithLogicApps: string = "functionOrchestrate_orchestrateWithLogicApps";
 }
 
