@@ -22,6 +22,9 @@ interface LogicAppInfo {
   id: string;
   resourceGroup: string;
   location: string;
+  function?: string;
+  actions?: any;
+  functions?: string[];
 }
 
 export interface LogicAppTableItem extends TableItem {
@@ -29,6 +32,7 @@ export interface LogicAppTableItem extends TableItem {
   id: string;
   resourceGroup: string;
   location: string;
+  function: string;
 }
 
 @Component({
@@ -127,11 +131,23 @@ export class LogicAppsComponent implements OnInit {
             id: app.id,
             resourceGroup: app.id.split('/')[4],
             location: this._translateService.instant(app.location),
-            type: 'row'
+            type: 'row',
+            actions: app.properties.definition.actions,
+            functions: []
           }))
           .sort((a: LogicAppInfo, b: LogicAppInfo) => {
             return a.name.localeCompare(b.name);
           });
+
+        this.logicApps.forEach((logicApp, ind) => {
+          for (const act in logicApp.actions) {
+            if (logicApp.actions.hasOwnProperty(act)) {
+              if (logicApp.actions[act].type === 'Function') {
+                this.logicApps[ind].functions.push(act);
+              }
+            }
+          }
+        });
 
         this.tableItems = this.logicApps
           .map(app => (<LogicAppTableItem>{
@@ -139,7 +155,8 @@ export class LogicAppsComponent implements OnInit {
             id: app.id,
             resourceGroup: app.resourceGroup,
             location: app.location,
-            type: 'row'
+            type: 'row',
+            function: app.functions[0]
           }));
 
         this.locationOptions = this.uniqueTypes(this.logicApps, 'location')
@@ -201,6 +218,7 @@ export class LogicAppsComponent implements OnInit {
         type: 'row',
         resourceGroup: app.resourceGroup,
         location: app.location,
+        function: app.functions[0]
       }));
     this.tableItems = newItems.concat(filteredItems);
 
@@ -235,7 +253,8 @@ export class LogicAppsComponent implements OnInit {
         id: app.id,
         type: 'row',
         resourceGroup: app.resourceGroup,
-        location: app.location
+        location: app.location,
+        function: app.functions[0]
       }));
     this.tableItems = newItems.concat(filteredItems);
 
